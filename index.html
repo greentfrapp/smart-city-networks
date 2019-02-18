@@ -16,20 +16,29 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.js"></script>
 	<style type="text/css">
 		body {
-			padding: 50px;
+			padding: 0px;
 		}
 		#tooltip {
+			height: 50px;
 			font-size: 24px;
+			position: absolute;
+			bottom: 0px;
+			right: 50%;
+			padding-right: 20px;
 		}
 		.graph {
-			width: 75%;
+			width: 50%;
+			height: 100%;
 			display: inline-block;
+			background-color: #efefef;
+			padding: 20px;
 		}
 		.infobox {
-			width: 20%;
+			width: 45%;
 			height: 100px;
 			display: inline-block;
 			vertical-align: top;
+			padding: 20px;
 		}
 		.highlighted {
 			stroke: #3498db;
@@ -72,6 +81,15 @@
 			stroke-width: 2;
 		}
 
+		div.ui.list div.item {
+			display: inline-block;
+			padding-right: 5px;
+		}
+
+		#desc {
+			padding-top: 20px;
+		}
+
 	</style>
 </head>
 <body>
@@ -85,6 +103,7 @@
 		</form>
 		<h1 id="main"></h1>
 		<div id="sub"><div class="ui list"></div></div>
+		<div id="desc"></div>
 	</div>
 	<script type='text/javascript'>    
 		var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1pIyebLlRCmnfO6lBxZsj8TpVJr-bGBa1xlg1kARcECI/pubhtml';
@@ -103,8 +122,8 @@
 			var data = datas.relations.elements;
 			var nodeDetails = datas.nodes.elements;
 			
-			var width = document.documentElement.clientWidth * 0.75;
-			var height = document.documentElement.clientHeight * 0.8;
+			var width = document.documentElement.clientWidth * 0.5;
+			var height = document.documentElement.clientHeight * 0.95;
 
 			d3.select("svg")
 				.attr("style", "width:" + width + "px;height:" + height + "px;");
@@ -186,10 +205,10 @@
 		}
 
 		function initNetwork(data, nodeList, tag) {
-			// var width = document.documentElement.clientWidth * 0.75;
-			// var height = document.documentElement.clientHeight * 0.8;
-			var width = 683;
-			var height = 542;
+			var width = document.documentElement.clientWidth * 0.5;
+			var height = document.documentElement.clientHeight * 0.95;
+			// var width = 683;
+			// var height = 542;
 
 			var linkForce = d3.forceLink().distance(100);
 
@@ -309,6 +328,9 @@
 				.append("div")
 				.attr("class", "item")
 				.html(d => "<i class='exchange icon'></i> " + d)
+
+			d3.select("#desc")
+				.html("<p>" + node.description.split("\n").join("</p><p>") + "</p>")
 				
 			d3.selectAll("circle")
 				.classed("highlighted", p => p.id === node.id);
@@ -348,6 +370,10 @@
 				.append("div")
 				.attr("class", "item")
 				.html(d => "<i class='circle outline icon'></i> " + d)
+
+			d3.select("#desc")
+				.html("<p>" + edge.description.split("\n").join("</p><p>") + "</p>")
+
 			d3.selectAll("path")
 				.classed("highlighted-link", p => p.id === edge.id);
 			d3.selectAll("circle")
