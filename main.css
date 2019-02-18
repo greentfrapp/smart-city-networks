@@ -1,0 +1,78 @@
+html {
+	height: 100%;
+}
+body {
+	height: 100%;
+	margin: 0;
+}
+#tooltip {
+	height: 50px;
+	font-size: 24px;
+	position: absolute;
+	bottom: 0px;
+	right: 50%;
+	padding-right: 20px;
+}
+.graph {
+	width: 50%;
+	height: 100%;
+	display: inline-block;
+	background-color: #efefef;
+	padding: 20px;
+}
+.infobox {
+	width: 45%;
+	height: 100px;
+	display: inline-block;
+	vertical-align: top;
+	padding: 20px;
+}
+.highlighted {
+	stroke: #3498db;
+	stroke-width: 5;
+}
+.hovered {
+	stroke-width: 5;
+}
+.node:hover {
+	stroke: #3498db;
+	cursor: pointer;
+}
+.link {
+	stroke: #93C464;
+}
+.link:hover {
+	cursor: pointer;
+}
+.highlighted-link {
+	stroke: #FF0000;
+}
+.hovered-link {
+	stroke: #FF0000;
+}
+.invisible {
+	display: none;
+}
+
+path {
+	fill: none;
+	stroke: #000000;
+}
+
+path:hover {
+	cursor: pointer;
+}
+
+circle {
+	stroke: #95a5a6;
+	stroke-width: 2;
+}
+
+div.ui.list div.item {
+	display: inline-block;
+	padding-right: 5px;
+}
+
+#desc {
+	padding-top: 20px;
+}
