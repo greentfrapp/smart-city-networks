@@ -2,8 +2,8 @@
 <htmllang="en">
 <head>
 	<metacharset="utf-8">
-	<title>D3 Page Template</title>
-	<script type="text/javascript"src="d3/d3.js">
+	<title>Smart City Networks</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.1/d3.min.js"></script>
 		
 	</script>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
@@ -80,7 +80,7 @@
 		<div id="tooltip"><p style="text-align: right;"></p></div>
 	</div>
 	<div class="infobox">
-		<h3>Filter</h3>
+		<h3></h3>
 		<form class="ui form">
 		</form>
 		<h1 id="main"></h1>
@@ -146,6 +146,7 @@
 
 			initNetwork(data, nodeList, "");
 
+			d3.select(".infobox").select("h3").html("Filter");
 
 			dropdown = d3.select("form")
 						.append("select")
