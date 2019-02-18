@@ -19,7 +19,7 @@
 			padding: 50px;
 		}
 		#tooltip {
-			font-size: 18px;
+			font-size: 24px;
 		}
 		.graph {
 			width: 75%;
@@ -319,9 +319,12 @@
 		function nodeHover(node) {
 			d3.select("#tooltip")
 				.select("p")
-				.html(node.id);
+				.html(node.id)
 			d3.selectAll("circle")
 				.classed("hovered", p => p.id === node.id);
+			d3.selectAll("circle.hovered")
+				.transition()
+				.attr("r", 40);
 		}
 
 		function edgeClick(edge) {
@@ -364,6 +367,8 @@
 				.select("p")
 				.html("");
 			d3.selectAll("circle")
+				.transition()
+				.attr("r", 30)
 				.classed("hovered", false);
 			d3.selectAll("path")
 				.classed("hovered-link", false);
