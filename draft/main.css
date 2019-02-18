@@ -1,0 +1,20 @@
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	margin: 0;
+}
+
+.section {
+	height: 100%;
+}
+
+#intro {
+	background: #aaa;
+}
+
+.ezlink {
+	stroke: #F00;
+}
