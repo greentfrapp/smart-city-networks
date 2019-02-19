@@ -28,21 +28,25 @@ function loadNodes(datas, tabletop) {
 	var nodeList = [];
 	var tagList = ["All"];
 
-	var nodeImg = {};
+	var nodeImg = {},
+	nodeDesc = {};
 	nodeDetails.forEach(node => {
 		nodeImg[node.id] = node.imgSrc;
+		nodeDesc[node.id] = node.description;
 	})
 
 	data.forEach(relation => {
 		if (!(relation.source in nodes)) {
 			node = {id: relation.source};
 			node.imgSrc = nodeImg[relation.source]
+			node.description = nodeDesc[relation.source]
 			nodes[relation.source] = node;
 			nodeList.push(node);
 		}
 		if (!(relation.target in nodes)) {
 			node = {id: relation.target};
 			node.imgSrc = nodeImg[relation.target]
+			node.description = nodeDesc[relation.source]
 			nodes[relation.target] = node;
 			nodeList.push(node);
 		}
