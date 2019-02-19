@@ -15,7 +15,7 @@ function loadNodes(datas, tabletop) {
 	var nodeDetails = datas.nodes.elements;
 	
 	var width = document.documentElement.clientWidth * 0.5;
-	var height = document.documentElement.clientHeight * 0.95;
+	var height = document.documentElement.clientHeight;
 
 	d3.select("svg")
 		.attr("style", "width:" + width + "px;height:" + height + "px;");
@@ -102,15 +102,15 @@ function loadNodes(datas, tabletop) {
 
 function initNetwork(data, nodeList, tag) {
 	var width = document.documentElement.clientWidth * 0.5;
-	var height = document.documentElement.clientHeight * 0.95;
+	var height = document.documentElement.clientHeight;
 	// var width = 683;
 	// var height = 542;
 
 	var linkForce = d3.forceLink().distance(100);
 
 	var force = d3.forceSimulation()
-		.force("charge", d3.forceManyBody().strength(-500))
-		.force("collision", d3.forceCollide(60))
+		.force("charge", d3.forceManyBody().strength(-400))
+		.force("collision", d3.forceCollide(50))
 		.force("y", d3.forceY(height / 2))
 		.force("x", d3.forceX(width / 2))
 		.force("link", linkForce)
@@ -322,9 +322,11 @@ function changeTag(data, nodeList) {
 }
 
 function arc(d, i) {
-	var draw = d3.line().curve(d3.curveBasis)
-	var midX = (d.source.x + d.target.x) / 2 + ((d.id % 5) * 2 * (-1) ** (d.id % 5) + 1) * 10
-	var midY = (d.source.y + d.target.y) / 2 + ((d.id % 5) * 2 * (-1) ** (d.id % 5) + 1) * 10
+	var draw = d3.line().curve(d3.curveBasis),
+	// midX = (d.source.x + d.target.x) / 2,
+	// midY = (d.source.y + d.target.y) / 2
+	midX = (d.source.x + d.target.x) / 2 + ((d.id % 5) * 2 * (-1) ** (d.id % 5) + 1) * 3,
+	midY = (d.source.y + d.target.y) / 2 + ((d.id % 5) * 2 * (-1) ** (d.id % 5) + 1) * 3
 	return draw([[d.source.x, d.source.y], [midX, midY], [d.target.x, d.target.y]])
 }
 
