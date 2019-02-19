@@ -46,7 +46,7 @@ function loadNodes(datas, tabletop) {
 		if (!(relation.target in nodes)) {
 			node = {id: relation.target};
 			node.imgSrc = nodeImg[relation.target]
-			node.description = nodeDesc[relation.source]
+			node.description = nodeDesc[relation.target]
 			nodes[relation.target] = node;
 			nodeList.push(node);
 		}
